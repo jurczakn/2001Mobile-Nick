@@ -1,3 +1,6 @@
 Hey, I added a file!!!!!Hey, I added a file!!!!!Hey, I added a file!!!!!Hey, I added a file!!!!!Hey, I added a file!!!!!Hey, I added a file!!!!!Hey, I added a file!!!!!Hey, I added a file!!!!!Hey, I added a file!!!!!
+<<<<<<< HEAD
 I am adding a new line.
+=======
+>>>>>>> added new line locally
 I am adding a new line on my local copy of the file...
