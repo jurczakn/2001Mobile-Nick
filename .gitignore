@@ -42,5 +42,6 @@ hs_err_pid*
 
 #properties
 **/*.properties
+Week2/JDBCExample/src/main/resources/database.properties
 
 #This is how you add to your gitignore file
