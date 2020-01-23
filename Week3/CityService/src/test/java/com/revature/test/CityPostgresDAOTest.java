@@ -1,10 +1,12 @@
 package com.revature.test;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -32,8 +34,11 @@ public class CityPostgresDAOTest {
 	private Connection conn;
 	
 	@Spy
-	private BaseStatement stmt = (BaseStatement) ConnectionUtil.getConnection().createStatement();
+	private Statement stmt = ConnectionUtil.getConnection().createStatement();
 
+	@Spy
+	private PreparedStatement findStmt = ConnectionUtil.getConnection().prepareStatement("select * from city where city_id = ?");
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -67,6 +72,12 @@ public class CityPostgresDAOTest {
 		cityDao.createCity(city);
 		
 		verify(stmt).executeUpdate("insert into city (name, population) values('Chicago', 27000000)");
+		
+	}
+	
+	@Test
+	public void testGetCityById() throws SQLException{
+		when(conn.createStatement()).thenReturn(findStmt);
 		
 	}
 	
